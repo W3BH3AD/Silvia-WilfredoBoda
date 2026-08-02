@@ -35,7 +35,7 @@
                 <nav class="nav-right desktop-only">
                     <a href="#historia" class="nav-link">HISTORIA</a>
                     <a href="#atuendo" class="nav-link">ATUENDO</a>
-                    <button class="nav-link rsvp-btn rsvp-trigger-btn" id="navRsvpBtn">RSVP</button>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="nav-link rsvp-btn" id="navRsvpBtn">RSVP</a>
                 </nav>
                 <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú de navegación">
                     <span class="hamburger-line"></span>
@@ -58,7 +58,7 @@
                 <a href="#ubicacion" class="drawer-link">UBICACIÓN</a>
                 <a href="#historia" class="drawer-link">HISTORIA</a>
                 <a href="#atuendo" class="drawer-link">ATUENDO</a>
-                <button class="btn-primary drawer-rsvp-btn rsvp-trigger-btn" id="drawerRsvpBtn">RSVP</button>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-primary drawer-rsvp-btn" id="drawerRsvpBtn">RSVP</a>
             </nav>
             <div class="drawer-footer">
                 <p class="drawer-date">Nov .14 .2026</p>
@@ -208,7 +208,7 @@
             <h2 class="section-title">EL ATUENDO</h2>
             
             <div class="attire-container">
-                <p class="attire-subtitle">CÓDIGO DE VESTIMENTA: CASUAL ELEGANTE</p>
+                <p class="attire-subtitle">CÓDIGO DE VESTIMENTA: FORMAL</p>
                 
                 <!-- Mandatory Color Rule Banner -->
                 <div class="attire-color-rule-box scroll-reveal">
@@ -297,89 +297,6 @@
             </div>
         </footer>
 
-    </div>
-
-    <!-- RSVP Modal (Elegant slide-up/fade modal) -->
-    <div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
-        <div class="modal-card">
-            <button class="modal-close-btn" id="closeRsvpBtn" aria-label="Cerrar modal">&times;</button>
-            <div class="modal-header">
-                <h3 class="modal-title" id="rsvpTitle">RSVP</h3>
-                <p class="modal-subtitle">CONFIRMA TU ASISTENCIA</p>
-            </div>
-            
-            <form class="modal-form" id="rsvpForm">
-                <div class="form-group">
-                    <label for="guestName" class="form-label">Nombre y Apellido</label>
-                    <input type="text" id="guestName" class="form-input" placeholder="Nombre completo" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">¿Asistirás a la boda?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="attendance" value="si" required checked>
-                            <span class="custom-radio"></span> Sí, asistiré con gusto
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="attendance" value="no" required>
-                            <span class="custom-radio"></span> Lo lamento, no podré
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group" id="companionGroup">
-                    <label for="companions" class="form-label">Número de acompañantes</label>
-                    <select id="companions" class="form-select">
-                        <option value="0">Sin acompañantes</option>
-                        <option value="1">1 Acompañante</option>
-                        <option value="2">2 Acompañantes</option>
-                        <option value="3">3 Acompañantes</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Requerimientos Alimentarios (Opcional)</label>
-                    <div class="checkbox-grid">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="diet" value="vegetariano">
-                            <span class="custom-checkbox"></span> Vegetariano
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="diet" value="vegano">
-                            <span class="custom-checkbox"></span> Vegano
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="diet" value="celiaco">
-                            <span class="custom-checkbox"></span> Celíaco
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="diet" value="ninguno">
-                            <span class="custom-checkbox"></span> Ninguno
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="songRequest" class="form-label">¿Qué canción no puede faltar en la fiesta? (Opcional)</label>
-                    <input type="text" id="songRequest" class="form-input" placeholder="Artista - Canción">
-                </div>
-                
-                <button type="submit" class="btn-primary form-submit-btn" id="submitRsvpBtn">CONFIRMAR ASISTENCIA</button>
-            </form>
-
-            <!-- Success State Overlay -->
-            <div class="success-overlay" id="rsvpSuccess">
-                <div class="success-content">
-                    <svg class="success-icon" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                    <h4 class="success-title">¡Muchas Gracias!</h4>
-                    <p class="success-message" id="successMsg">Tu confirmación ha sido registrada con éxito.</p>
-                    <button class="btn-primary success-close-btn" id="successDoneBtn">CERRAR</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Map/Location Modal (Leaflet interactive map inside elegant panel) -->

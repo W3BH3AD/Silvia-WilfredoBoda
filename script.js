@@ -134,25 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // -------------------------------------------------------------
-    // 4. Modals Controller (RSVP & Map Modals)
+    // 4. Map Modal Controller
     // -------------------------------------------------------------
-    const rsvpModal = document.getElementById("rsvpModal");
     const mapModal = document.getElementById("mapModal");
-    
-    const openMapBtn = document.getElementById("openMapBtn");
-    
-    const closeRsvpBtn = document.getElementById("closeRsvpBtn");
     const closeMapBtn = document.getElementById("closeMapBtn");
-    const successDoneBtn = document.getElementById("successDoneBtn");
-
-    // Open RSVP Modal for all trigger buttons (desktop navbar & mobile drawer)
-    document.querySelectorAll(".rsvp-trigger-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            closeDrawer();
-            rsvpModal.classList.add("active");
-            document.body.style.overflow = "hidden";
-        });
-    });
 
     // -------------------------------------------------------------
     // Location Data & Multi-Venue Map Controller
@@ -251,99 +236,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Close Modals
     const closeModal = (modal) => {
-        modal.classList.remove("active");
-        document.body.style.overflow = "auto";
-        
-        // If closing RSVP modal, reset success overlay after animation finishes
-        if (modal === rsvpModal) {
-            setTimeout(() => {
-                document.getElementById("rsvpSuccess").classList.remove("active");
-                document.getElementById("rsvpForm").reset();
-                document.getElementById("companionGroup").style.display = "flex";
-            }, 600);
+        if (modal) {
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";
         }
     };
 
-    closeRsvpBtn.addEventListener("click", () => closeModal(rsvpModal));
-    closeMapBtn.addEventListener("click", () => closeModal(mapModal));
-    successDoneBtn.addEventListener("click", () => closeModal(rsvpModal));
+    if (closeMapBtn) closeMapBtn.addEventListener("click", () => closeModal(mapModal));
 
     // Close on backdrop overlay click
-    [rsvpModal, mapModal].forEach(modal => {
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                closeModal(modal);
+    if (mapModal) {
+        mapModal.addEventListener("click", (e) => {
+            if (e.target === mapModal) {
+                closeModal(mapModal);
             }
         });
-    });
+    }
 
     // Close on Escape key press
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            if (rsvpModal.classList.contains("active")) closeModal(rsvpModal);
-            if (mapModal.classList.contains("active")) closeModal(mapModal);
+        if (e.key === "Escape" && mapModal && mapModal.classList.contains("active")) {
+            closeModal(mapModal);
         }
-    });
-
-
-    // -------------------------------------------------------------
-    // 4. RSVP Form Processing & local storage
-    // -------------------------------------------------------------
-    const rsvpForm = document.getElementById("rsvpForm");
-    const rsvpSuccess = document.getElementById("rsvpSuccess");
-    const attendanceRadios = document.getElementsByName("attendance");
-    const companionGroup = document.getElementById("companionGroup");
-
-    // Dynamic show/hide of companion selector based on attendance
-    attendanceRadios.forEach(radio => {
-        radio.addEventListener("change", (e) => {
-            if (e.target.value === "no") {
-                companionGroup.style.display = "none";
-            } else {
-                companionGroup.style.display = "flex";
-            }
-        });
-    });
-
-    rsvpForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById("guestName").value.trim();
-        const attendance = document.querySelector('input[name="attendance"]:checked').value;
-        const companions = attendance === "si" ? document.getElementById("companions").value : "0";
-        const song = document.getElementById("songRequest").value.trim();
-
-        // Get checked dietary restrictions
-        const diets = [];
-        document.querySelectorAll('input[name="diet"]:checked').forEach(cb => {
-            diets.push(cb.value);
-        });
-
-        // Form RSVP Object
-        const rsvpData = {
-            name,
-            attendance,
-            companions,
-            diets,
-            song,
-            dateSubmitted: new Date().toISOString()
-        };
-
-        // Save to localStorage
-        let rsvpList = JSON.parse(localStorage.getItem("sencia_rsvps")) || [];
-        rsvpList.push(rsvpData);
-        localStorage.setItem("sencia_rsvps", JSON.stringify(rsvpList));
-
-        // Tailor success message depending on attendance selection
-        const successMsg = document.getElementById("successMsg");
-        if (attendance === "si") {
-            successMsg.textContent = "¡Qué alegría! Hemos registrado tu asistencia. Nos vemos pronto para celebrar este gran día.";
-        } else {
-            successMsg.textContent = "Lamentamos que no puedas acompañarnos. Te extrañaremos, pero agradecemos tu respuesta.";
-        }
-
-        // Show Success Overlay
-        rsvpSuccess.classList.add("active");
     });
 
 

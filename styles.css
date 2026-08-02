@@ -706,7 +706,7 @@ section {
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    z-index: 100;
+    z-index: 2500;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1884,6 +1884,44 @@ section {
     
     .modal-card {
         padding: 2.5rem 1.5rem;
+    }
+
+    /* Responsive Map Modal & Cards */
+    .map-card {
+        padding: 2.2rem 0 0 0;
+        max-width: 92vw;
+        margin: 0 auto;
+    }
+
+    .map-card .modal-header {
+        padding: 0 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .map-card .modal-title {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        line-height: 1.2;
+    }
+
+    .map-card .modal-close-btn {
+        top: 0.8rem;
+        right: 0.8rem;
+        font-size: 1.8rem;
+    }
+
+    .map-body {
+        height: 250px;
+    }
+
+    .map-footer {
+        padding: 1.2rem 1.5rem 1.5rem 1.5rem;
+    }
+
+    .map-nav-btn {
+        padding: 0.85rem 1rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
     }
     
     .checkbox-grid {
