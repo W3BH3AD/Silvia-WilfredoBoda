@@ -297,6 +297,30 @@ document.addEventListener("DOMContentLoaded", () => {
         dot.addEventListener("click", () => goToSlide(i));
     });
 
+    // Touch & Swipe Support for Attire Carousel on Mobile / Tablets
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    if (attireTrack) {
+        attireTrack.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        attireTrack.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+    }
+
+    const handleSwipe = () => {
+        const swipeThreshold = 35;
+        if (touchEndX < touchStartX - swipeThreshold) {
+            goToSlide(currentSlide + 1); // Swipe left -> Next slide
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+            goToSlide(currentSlide - 1); // Swipe right -> Prev slide
+        }
+    };
+
 
     // -------------------------------------------------------------
     // 6. Floating Ambient Background Music Engine
