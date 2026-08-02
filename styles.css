@@ -647,6 +647,10 @@ section {
     aspect-ratio: 4 / 3;
 }
 
+.story-right-image .image-wrapper img {
+    object-position: center 85%;
+}
+
 /* Canvas Footer Layout */
 .canvas-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.04);
