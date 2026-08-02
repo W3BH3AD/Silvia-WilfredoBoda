@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Silvia & Wilfredo - Invitación y detalles de nuestra boda. Acompáñanos este 14 de noviembre de 2026.">
+    <title>Silvia & Wilfredo — Boda</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet JS Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Main Full Screen Canvas -->
+    <div class="main-canvas" id="canvas">
+        
+        <!-- Header / Navigation Bar (Smart Fixed Scroll-Up Header) -->
+        <header class="nav-bar" id="mainHeader">
+            <div class="nav-container">
+                <nav class="nav-left desktop-only">
+                    <a href="#nosotros" class="nav-link">NOSOTROS</a>
+                    <a href="#ubicacion" class="nav-link">UBICACIÓN</a>
+                </nav>
+                <div class="nav-center">
+                    <a href="#" class="brand-title">SILVIA & WILFREDO</a>
+                </div>
+                <nav class="nav-right desktop-only">
+                    <a href="#historia" class="nav-link">HISTORIA</a>
+                    <a href="#atuendo" class="nav-link">ATUENDO</a>
+                    <button class="nav-link rsvp-btn rsvp-trigger-btn" id="navRsvpBtn">RSVP</button>
+                </nav>
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú de navegación">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Slide-Out Right Drawer -->
+        <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+        <aside class="mobile-drawer" id="mobileDrawer" aria-label="Menú de navegación">
+            <div class="drawer-header">
+                <span class="drawer-brand">SILVIA & WILFREDO</span>
+                <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Cerrar menú">&times;</button>
+            </div>
+            <div class="drawer-divider"></div>
+            <nav class="drawer-nav">
+                <a href="#nosotros" class="drawer-link">NOSOTROS</a>
+                <a href="#ubicacion" class="drawer-link">UBICACIÓN</a>
+                <a href="#historia" class="drawer-link">HISTORIA</a>
+                <a href="#atuendo" class="drawer-link">ATUENDO</a>
+                <button class="btn-primary drawer-rsvp-btn rsvp-trigger-btn" id="drawerRsvpBtn">RSVP</button>
+            </nav>
+            <div class="drawer-footer">
+                <p class="drawer-date">Nov .14 .2026</p>
+            </div>
+        </aside>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="nosotros">
+
+            <!-- Hero Main Date -->
+            <div class="hero-date-container fade-in">
+                <span class="hero-date">Nov .14 .2026</span>
+            </div>
+
+            <!-- Three Photo collage -->
+            <div class="collage-container">
+                <div class="collage-item collage-left scroll-reveal">
+                    <div class="image-wrapper shadow-soft">
+                        <img src="assets/WS Foto 4.png" alt="Wilfredo y Silvia" loading="lazy">
+                    </div>
+                </div>
+                <div class="collage-item collage-center scroll-reveal">
+                    <div class="image-wrapper shadow-premium">
+                        <img src="assets/WS Foto 2.png" alt="Wilfredo y Silvia en Brooklyn Bridge" loading="lazy">
+                    </div>
+                </div>
+                <div class="collage-item collage-right scroll-reveal">
+                    <div class="image-wrapper shadow-soft">
+                        <img src="assets/WS Foto 3.png" alt="Wilfredo y Silvia junto al agua" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subtitle -->
+            <div class="hero-subtitle-container scroll-reveal">
+                <p class="hero-subtitle">ACOMPÁÑANOS EN ESTE VIAJE DE AMOR Y COMPROMISO</p>
+            </div>
+        </section>
+
+        <!-- Divider Line -->
+        <hr class="section-divider scroll-reveal">
+
+        <!-- Ubicación Section -->
+        <section class="location-section scroll-reveal" id="ubicacion">
+            <h2 class="section-title">UBICACIÓN</h2>
+            
+            <div class="locations-container">
+                <!-- Location 1: Ceremonia -->
+                <div class="location-card scroll-reveal">
+                    <div>
+                        <span class="location-badge">CEREMONIA</span>
+                        <h3 class="location-venue">PARROQUIA JESÚS MEDIADOR</h3>
+                        <div class="location-time">HORA: 3:00 PM</div>
+                    </div>
+                    <p class="location-address">
+                        1000 Calle Demetrio Odaly<br>
+                        San Juan, PR 00924
+                    </p>
+                    <button class="btn-primary location-map-btn open-location-btn" data-location="ceremonia">VER UBICACIÓN</button>
+                </div>
+
+                <!-- Vertical Divider -->
+                <div class="location-divider-v"></div>
+
+                <!-- Location 2: Recepción -->
+                <div class="location-card scroll-reveal">
+                    <div>
+                        <span class="location-badge">RECEPCIÓN</span>
+                        <h3 class="location-venue">FUNDACIÓN LUIS MUÑOZ MARÍN</h3>
+                        <div class="location-time">HORA: 5:00 PM</div>
+                    </div>
+                    <p class="location-address">
+                        877 Carretera Estatal<br>
+                        San Juan, PR 00926
+                    </p>
+                    <button class="btn-primary location-map-btn open-location-btn" data-location="recepcion">VER UBICACIÓN</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cuenta Regresiva (Countdown Section) -->
+        <section class="countdown-section" id="cuenta-regresiva" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('assets/Save the date bw.png');">
+            <div class="countdown-overlay-content">
+                <p class="countdown-label scroll-reveal">CUENTA REGRESIVA</p>
+                
+                <div class="countdown-timer scroll-reveal">
+                    <div class="timer-segment">
+                        <span class="timer-value" id="daysValue">000</span>
+                        <span class="timer-label">DÍAS</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span class="timer-value" id="hoursValue">00</span>
+                        <span class="timer-label">HORAS</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span class="timer-value" id="minutesValue">00</span>
+                        <span class="timer-label">MINUTOS</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span class="timer-value" id="secondsValue">00</span>
+                        <span class="timer-label">SEGUNDOS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuestra Historia Section -->
+        <section class="story-section scroll-reveal" id="historia">
+            <h2 class="section-title">NUESTRA HISTORIA</h2>
+            
+            <div class="story-layout">
+                <div class="story-left scroll-reveal">
+                    <div class="image-wrapper shadow-premium">
+                        <img src="assets/WS Foto 1.png" alt="Silvia y Wilfredo" loading="lazy">
+                    </div>
+                </div>
+                
+                <div class="story-right scroll-reveal">
+                    <div class="story-text-block">
+                        <p class="story-paragraph">
+                            Nuestra historia comenzó hace ocho años de una manera muy especial, con una simple carita feliz 😊. Lo que parecía un pequeño gesto dio paso a una conversación que poco a poco, se transformó en un gran amor y finalmente, en el sueño de compartir una vida juntos.
+                        </p>
+                        <p class="story-paragraph">
+                            A lo largo de estos años hemos vivido momentos inolvidables, hemos crecido como pareja y hemos construido un hogar lleno de amor, respeto y felicidad. Junto a Sofía hemos formado una familia, en la que cada día hemos aprendido que el amor se fortalece cuando se comparte, se cuida y se vive en familia.
+                        </p>
+                        <p class="story-paragraph">
+                            Hoy, después de ocho maravillosos años, damos el siguiente paso con el corazón lleno de ilusión y gratitud.
+                        </p>
+                        <p class="story-paragraph">
+                            Queremos invitarlos a acompañarnos a celebrar esta historia de amor, el camino que nos ha traído hasta aquí y el comienzo de un nuevo capítulo que soñamos seguir escribiendo juntos. Su presencia hará que este día sea aún más especial e inolvidable para nosotros.
+                        </p>
+                    </div>
+                    <div class="story-right-image">
+                        <div class="image-wrapper shadow-soft">
+                            <img src="assets/WS Foto 3.png" alt="Silvia y Wilfredo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider Line -->
+        <hr class="section-divider scroll-reveal">
+
+        <!-- Attire / Dress Code Section -->
+        <section class="attire-section scroll-reveal" id="atuendo">
+            <h2 class="section-title">EL ATUENDO</h2>
+            
+            <div class="attire-container">
+                <p class="attire-subtitle">CÓDIGO DE VESTIMENTA: CASUAL ELEGANTE</p>
+                
+                <!-- Mandatory Color Rule Banner -->
+                <div class="attire-color-rule-box scroll-reveal">
+                    <p class="color-rule-label">CÓDIGO DE COLOR OBLIGATORIO</p>
+                    <p class="color-rule-main">VESTIR EXCLUSIVAMENTE DE <strong>NEGRO</strong></p>
+                    <p class="color-rule-sub">(SIN BLANCO / NO WHITE)</p>
+                </div>
+
+                <!-- Inspiration Options Carousel -->
+                <div class="attire-carousel-wrapper scroll-reveal">
+                    <h3 class="carousel-title">OPCIONES E IDEAS DE ATUENDO</h3>
+                    <p class="carousel-subtitle">Explora sugerencias visuales de vestimenta para guiar tu elección:</p>
+                    
+                    <div class="carousel-container">
+                        <button class="carousel-btn prev-btn" id="attirePrevBtn" aria-label="Imagen anterior">&#10094;</button>
+                        
+                        <div class="carousel-track-container">
+                            <div class="carousel-track" id="attireTrack">
+                                <!-- Slide 1: Ellas 1 -->
+                                <div class="carousel-slide">
+                                    <div class="slide-image-wrapper">
+                                        <img src="assets/Untitled design/Ellas Opciones 1.jpg" alt="Opciones de vestidos negros para ellas" loading="lazy">
+                                    </div>
+                                    <p class="slide-caption">ELLAS — OPCIÓN 1: VESTIDOS DE CÓCTEL Y CORTES ELEGANTES</p>
+                                </div>
+                                
+                                <!-- Slide 2: Ellas 2 -->
+                                <div class="carousel-slide">
+                                    <div class="slide-image-wrapper">
+                                        <img src="assets/Untitled design/Ellas Opciones 2.jpg" alt="Opciones de vestidos largos y elegantes" loading="lazy">
+                                    </div>
+                                    <p class="slide-caption">ELLAS — OPCIÓN 2: ESTILOS DE GALA Y TELAS SOFISTICADAS</p>
+                                </div>
+                                
+                                <!-- Slide 3: Ellos 1 -->
+                                <div class="carousel-slide">
+                                    <div class="slide-image-wrapper">
+                                        <img src="assets/Untitled design/Ellos Opciones 1.jpg" alt="Traje completo negro con corbata" loading="lazy">
+                                    </div>
+                                    <p class="slide-caption">ELLOS — OPCIÓN 1: TRAJE COMPLETO NEGRO ELEGANTE</p>
+                                </div>
+                                
+                                <!-- Slide 4: Ellos 2 -->
+                                <div class="carousel-slide">
+                                    <div class="slide-image-wrapper">
+                                        <img src="assets/Untitled design/Ellos Opciones 2.jpg" alt="Camisa de vestir y pantalón sastre sin corbata" loading="lazy">
+                                    </div>
+                                    <p class="slide-caption">ELLOS — OPCIÓN 2: CAMISA Y PANTALÓN SASTRE (CASUAL ELEGANTE)</p>
+                                </div>
+                                
+                                <!-- Slide 5: Ellos 3 -->
+                                <div class="carousel-slide">
+                                    <div class="slide-image-wrapper">
+                                        <img src="assets/Untitled design/Ellos Opciones 3.jpg" alt="Saco negro con camisa abierta" loading="lazy">
+                                    </div>
+                                    <p class="slide-caption">ELLOS — OPCIÓN 3: SACO NEGRO Y CAMISA SIN CORBATA</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="carousel-btn next-btn" id="attireNextBtn" aria-label="Siguiente imagen">&#10095;</button>
+                    </div>
+
+                    <!-- Carousel Dots Indicators -->
+                    <div class="carousel-dots" id="attireDots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
+                        <span class="dot" data-index="4"></span>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Elegant Footer -->
+        <footer class="canvas-footer">
+            <div class="footer-names">SILVIA & WILFREDO</div>
+            <div class="footer-divider"></div>
+            <div class="footer-notes">
+                <p>Te esperamos con alegría para celebrar este capítulo de nuestra historia.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- RSVP Modal (Elegant slide-up/fade modal) -->
+    <div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="closeRsvpBtn" aria-label="Cerrar modal">&times;</button>
+            <div class="modal-header">
+                <h3 class="modal-title" id="rsvpTitle">RSVP</h3>
+                <p class="modal-subtitle">CONFIRMA TU ASISTENCIA</p>
+            </div>
+            
+            <form class="modal-form" id="rsvpForm">
+                <div class="form-group">
+                    <label for="guestName" class="form-label">Nombre y Apellido</label>
+                    <input type="text" id="guestName" class="form-input" placeholder="Nombre completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">¿Asistirás a la boda?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="si" required checked>
+                            <span class="custom-radio"></span> Sí, asistiré con gusto
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="no" required>
+                            <span class="custom-radio"></span> Lo lamento, no podré
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="companionGroup">
+                    <label for="companions" class="form-label">Número de acompañantes</label>
+                    <select id="companions" class="form-select">
+                        <option value="0">Sin acompañantes</option>
+                        <option value="1">1 Acompañante</option>
+                        <option value="2">2 Acompañantes</option>
+                        <option value="3">3 Acompañantes</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Requerimientos Alimentarios (Opcional)</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet" value="vegetariano">
+                            <span class="custom-checkbox"></span> Vegetariano
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet" value="vegano">
+                            <span class="custom-checkbox"></span> Vegano
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet" value="celiaco">
+                            <span class="custom-checkbox"></span> Celíaco
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet" value="ninguno">
+                            <span class="custom-checkbox"></span> Ninguno
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="songRequest" class="form-label">¿Qué canción no puede faltar en la fiesta? (Opcional)</label>
+                    <input type="text" id="songRequest" class="form-input" placeholder="Artista - Canción">
+                </div>
+                
+                <button type="submit" class="btn-primary form-submit-btn" id="submitRsvpBtn">CONFIRMAR ASISTENCIA</button>
+            </form>
+
+            <!-- Success State Overlay -->
+            <div class="success-overlay" id="rsvpSuccess">
+                <div class="success-content">
+                    <svg class="success-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <h4 class="success-title">¡Muchas Gracias!</h4>
+                    <p class="success-message" id="successMsg">Tu confirmación ha sido registrada con éxito.</p>
+                    <button class="btn-primary success-close-btn" id="successDoneBtn">CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map/Location Modal (Leaflet interactive map inside elegant panel) -->
+    <div class="modal-overlay" id="mapModal" role="dialog" aria-modal="true" aria-labelledby="mapTitle">
+        <div class="modal-card map-card">
+            <button class="modal-close-btn" id="closeMapBtn" aria-label="Cerrar modal">&times;</button>
+            <div class="modal-header">
+                <h3 class="modal-title" id="mapTitle">CEREMONIA</h3>
+                <p class="modal-subtitle" id="mapSubtitle">PARROQUIA JESÚS MEDIADOR</p>
+                <p class="map-address-text" id="mapAddressText">1000 Calle Demetrio Odaly, San Juan, PR 00924</p>
+            </div>
+            
+            <div class="map-body">
+                <div id="map"></div>
+            </div>
+            
+            <div class="map-footer">
+                <a href="https://maps.google.com/?q=Parroquia+Jes%C3%BAs+Mediador,+1000+Calle+Demetrio+Odaly,+San+Juan,+PR+00924" target="_blank" rel="noopener noreferrer" class="btn-primary map-nav-btn" id="mapNavBtn">ABRIR EN GOOGLE MAPS</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Background Audio Element -->
+    <audio id="bgAudio" src="assets/Alex Warren - Ordinary (Official Lyric Video) - Alex Warren (128k).mp3" loop preload="auto"></audio>
+
+    <!-- Floating Ambient Background Music Control -->
+    <div class="music-player" id="musicPlayer" role="button" aria-label="Toggle background music">
+        <div class="music-bars" id="musicBars">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <span class="music-text" id="musicStatusText">MÚSICA: OFF</span>
+    </div>
+
+    <!-- Leaflet JS Map script -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- Custom script -->
+    <script src="script.js"></script>
+</body>
+</html>
