@@ -270,7 +270,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const attireDots = document.querySelectorAll("#attireDots .dot");
     
     let currentSlide = 0;
-    const totalSlides = 5;
+    const slides = document.querySelectorAll("#attireTrack .carousel-slide");
+    const totalSlides = slides.length || 8;
 
     const goToSlide = (index) => {
         if (index < 0) index = totalSlides - 1;
