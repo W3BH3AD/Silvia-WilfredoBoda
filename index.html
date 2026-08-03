@@ -101,6 +101,32 @@
         <!-- Divider Line -->
         <hr class="section-divider scroll-reveal">
 
+        <!-- Cuenta Regresiva (Countdown Section) -->
+        <section class="countdown-section" id="cuenta-regresiva" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('assets/Save the date bw.png');">
+            <div class="countdown-overlay-content">
+                <p class="countdown-label scroll-reveal">CUENTA REGRESIVA</p>
+                
+                <div class="countdown-timer scroll-reveal">
+                    <div class="timer-segment">
+                        <span class="timer-value" id="daysValue">000</span>
+                        <span class="timer-label">DÍAS</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span class="timer-value" id="hoursValue">00</span>
+                        <span class="timer-label">HORAS</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span class="timer-value" id="minutesValue">00</span>
+                        <span class="timer-label">MINUTOS</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span class="timer-value" id="secondsValue">00</span>
+                        <span class="timer-label">SEGUNDOS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Ubicación Section -->
         <section class="location-section scroll-reveal" id="ubicacion">
             <h2 class="section-title">UBICACIÓN</h2>
@@ -135,32 +161,6 @@
                         San Juan, PR 00926
                     </p>
                     <button class="btn-primary location-map-btn open-location-btn" data-location="recepcion">VER UBICACIÓN</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Cuenta Regresiva (Countdown Section) -->
-        <section class="countdown-section" id="cuenta-regresiva" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('assets/Save the date bw.png');">
-            <div class="countdown-overlay-content">
-                <p class="countdown-label scroll-reveal">CUENTA REGRESIVA</p>
-                
-                <div class="countdown-timer scroll-reveal">
-                    <div class="timer-segment">
-                        <span class="timer-value" id="daysValue">000</span>
-                        <span class="timer-label">DÍAS</span>
-                    </div>
-                    <div class="timer-segment">
-                        <span class="timer-value" id="hoursValue">00</span>
-                        <span class="timer-label">HORAS</span>
-                    </div>
-                    <div class="timer-segment">
-                        <span class="timer-value" id="minutesValue">00</span>
-                        <span class="timer-label">MINUTOS</span>
-                    </div>
-                    <div class="timer-segment">
-                        <span class="timer-value" id="secondsValue">00</span>
-                        <span class="timer-label">SEGUNDOS</span>
-                    </div>
                 </div>
             </div>
         </section>
@@ -227,7 +227,12 @@
                         
                         <div class="carousel-track-container">
                             <div class="carousel-track" id="attireTrack">
-                                <!-- Ellas 1 to 5 -->
+                                <!-- Ellas 5 (First slide), Ellas 1 to 4 -->
+                                <div class="carousel-slide">
+                                    <div class="slide-image-wrapper">
+                                        <img src="assets/Ellas 5.PNG" alt="Opción de vestimenta Ellas 5" loading="lazy">
+                                    </div>
+                                </div>
                                 <div class="carousel-slide">
                                     <div class="slide-image-wrapper">
                                         <img src="assets/Ellas 1.PNG" alt="Opción de vestimenta Ellas 1" loading="lazy">
@@ -246,11 +251,6 @@
                                 <div class="carousel-slide">
                                     <div class="slide-image-wrapper">
                                         <img src="assets/Ellas 4.PNG" alt="Opción de vestimenta Ellas 4" loading="lazy">
-                                    </div>
-                                </div>
-                                <div class="carousel-slide">
-                                    <div class="slide-image-wrapper">
-                                        <img src="assets/Ellas 5.PNG" alt="Opción de vestimenta Ellas 5" loading="lazy">
                                     </div>
                                 </div>
                                 

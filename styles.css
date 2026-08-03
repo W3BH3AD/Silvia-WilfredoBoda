@@ -648,7 +648,7 @@ section {
 }
 
 .story-right-image .image-wrapper img {
-    object-position: center 65%;
+    object-position: center top;
 }
 
 /* Canvas Footer Layout */
@@ -656,7 +656,7 @@ section {
     border-top: 1px solid rgba(0, 0, 0, 0.04);
     margin-top: 5rem;
     padding-top: 4rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 4rem;
     text-align: center;
 }
 
@@ -1852,6 +1852,10 @@ section {
     .countdown-section {
         padding: 4.5rem 1rem;
         margin: 3.5rem 0;
+    }
+    
+    .canvas-footer {
+        padding-bottom: 6.5rem; /* Extra clearance for floating music player on mobile */
     }
     
     .countdown-timer {
