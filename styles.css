@@ -648,7 +648,7 @@ section {
 }
 
 .story-right-image .image-wrapper img {
-    object-position: center top;
+    object-position: center;
 }
 
 /* Canvas Footer Layout */
