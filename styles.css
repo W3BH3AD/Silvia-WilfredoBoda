@@ -989,6 +989,11 @@ section {
 .rsvp-container {
     max-width: 580px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .rsvp-intro-text {
