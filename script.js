@@ -183,10 +183,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitRsvpBtn.textContent = "ENVIANDO...";
             }
 
-            // Target Emails: info@kriziadiaz.com, Silviabonet@pr@yahoo.com, Wilfredo.cubero@gmail.com
-            const primaryEmail = "info@kriziadiaz.com";
-            const ccEmails = "Silviabonet_pr@yahoo.com,Wilfredo.cubero@gmail.com,Silviabonet@pr@yahoo.com";
+            // Primary Target: Silviabonet_pr@yahoo.com | CC: Wilfredo.cubero@gmail.com, info@kriziadiaz.com
+            const primaryEmail = "Silviabonet_pr@yahoo.com";
+            const ccEmails = "Wilfredo.cubero@gmail.com,info@kriziadiaz.com";
 
+            // Primary Dispatch via FormSubmit
             fetch(`https://formsubmit.co/ajax/${primaryEmail}`, {
                 method: "POST",
                 headers: {
@@ -207,8 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 showSuccessState(fullName, confirmationText);
             })
             .catch(error => {
-                console.log("FormSubmit submission:", error);
-                // Fallback: local confirmation overlay & storage
+                console.log("FormSubmit Notice:", error);
                 showSuccessState(fullName, confirmationText);
             });
         });
