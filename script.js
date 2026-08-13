@@ -183,9 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitRsvpBtn.textContent = "ENVIANDO...";
             }
 
-            // Primary Target: Silviabonet_pr@yahoo.com | CC: Wilfredo.cubero@gmail.com, info@kriziadiaz.com
-            const primaryEmail = "Silviabonet_pr@yahoo.com";
-            const ccEmails = "Wilfredo.cubero@gmail.com,info@kriziadiaz.com";
+            // Primary Target: silviabonetpr@yahoo.com | CC: wilfredo.cubero@gmail.com, info@kriziadiaz.com
+            const primaryEmail = "silviabonetpr@yahoo.com";
+            const ccEmails = "wilfredo.cubero@gmail.com,info@kriziadiaz.com";
 
             // Primary Dispatch via FormSubmit
             fetch(`https://formsubmit.co/ajax/${primaryEmail}`, {
