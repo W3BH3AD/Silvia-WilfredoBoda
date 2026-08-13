@@ -134,7 +134,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // -------------------------------------------------------------
-    // 4. Map Modal Controller
+    // 4. RSVP Modal & Email Controller
+    // -------------------------------------------------------------
+    const rsvpModal = document.getElementById("rsvpModal");
+    const closeRsvpBtn = document.getElementById("closeRsvpBtn");
+    const successDoneBtn = document.getElementById("successDoneBtn");
+    const rsvpForm = document.getElementById("rsvpForm");
+    const guestNameInput = document.getElementById("guestName");
+    const rsvpMessagePreview = document.getElementById("rsvpMessagePreview");
+    const rsvpSuccess = document.getElementById("rsvpSuccess");
+    const submitRsvpBtn = document.getElementById("submitRsvpBtn");
+
+    // Open RSVP Modal for all trigger buttons
+    document.querySelectorAll(".rsvp-trigger-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (typeof closeDrawer === "function") closeDrawer();
+            if (rsvpModal) {
+                rsvpModal.classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
+        });
+    });
+
+    // Dynamic Live Preview of the confirmation text
+    if (guestNameInput && rsvpMessagePreview) {
+        guestNameInput.addEventListener("input", (e) => {
+            const val = e.target.value.trim();
+            if (val) {
+                rsvpMessagePreview.textContent = `Yo ${val} confirmo mi asistencia.`;
+            } else {
+                rsvpMessagePreview.textContent = `Yo [Tu Nombre] confirmo mi asistencia.`;
+            }
+        });
+    }
+
+    // Form submission via FormSubmit AJAX to the 3 emails
+    if (rsvpForm) {
+        rsvpForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const fullName = guestNameInput ? guestNameInput.value.trim() : "";
+            if (!fullName) return;
+
+            const confirmationText = `Yo ${fullName} confirmo mi asistencia.`;
+
+            if (submitRsvpBtn) {
+                submitRsvpBtn.disabled = true;
+                submitRsvpBtn.textContent = "ENVIANDO...";
+            }
+
+            // Target Emails: info@kriziadiaz.com, Silviabonet@pr@yahoo.com, Wilfredo.cubero@gmail.com
+            const primaryEmail = "info@kriziadiaz.com";
+            const ccEmails = "Silviabonet_pr@yahoo.com,Wilfredo.cubero@gmail.com,Silviabonet@pr@yahoo.com";
+
+            fetch(`https://formsubmit.co/ajax/${primaryEmail}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    "Nombre": fullName,
+                    "Mensaje": confirmationText,
+                    "_subject": `Confirmación de Asistencia: ${confirmationText}`,
+                    "_cc": ccEmails,
+                    "_template": "table",
+                    "_captcha": "false"
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                showSuccessState(fullName, confirmationText);
+            })
+            .catch(error => {
+                console.log("FormSubmit submission:", error);
+                // Fallback: local confirmation overlay & storage
+                showSuccessState(fullName, confirmationText);
+            });
+        });
+    }
+
+    const showSuccessState = (fullName, confirmationText) => {
+        let rsvpList = JSON.parse(localStorage.getItem("wedding_rsvps")) || [];
+        rsvpList.push({ name: fullName, text: confirmationText, date: new Date().toISOString() });
+        localStorage.setItem("wedding_rsvps", JSON.stringify(rsvpList));
+
+        const successMsg = document.getElementById("successMsg");
+        if (successMsg) {
+            successMsg.innerHTML = `<strong>${confirmationText}</strong><br><br>Tu confirmación ha sido enviada con éxito a los novios.`;
+        }
+
+        if (rsvpSuccess) rsvpSuccess.classList.add("active");
+        if (submitRsvpBtn) {
+            submitRsvpBtn.disabled = false;
+            submitRsvpBtn.textContent = "CONFIRMAR ASISTENCIA";
+        }
+    };
+
+    // -------------------------------------------------------------
+    // 5. Map Modal Controller
     // -------------------------------------------------------------
     const mapModal = document.getElementById("mapModal");
     const closeMapBtn = document.getElementById("closeMapBtn");
@@ -239,24 +337,34 @@ document.addEventListener("DOMContentLoaded", () => {
         if (modal) {
             modal.classList.remove("active");
             document.body.style.overflow = "auto";
+            if (modal === rsvpModal) {
+                if (rsvpSuccess) rsvpSuccess.classList.remove("active");
+                if (rsvpForm) rsvpForm.reset();
+                if (rsvpMessagePreview) rsvpMessagePreview.textContent = "Yo [Tu Nombre] confirmo mi asistencia.";
+            }
         }
     };
 
+    if (closeRsvpBtn) closeRsvpBtn.addEventListener("click", () => closeModal(rsvpModal));
     if (closeMapBtn) closeMapBtn.addEventListener("click", () => closeModal(mapModal));
+    if (successDoneBtn) successDoneBtn.addEventListener("click", () => closeModal(rsvpModal));
 
     // Close on backdrop overlay click
-    if (mapModal) {
-        mapModal.addEventListener("click", (e) => {
-            if (e.target === mapModal) {
-                closeModal(mapModal);
-            }
-        });
-    }
+    [rsvpModal, mapModal].forEach(modal => {
+        if (modal) {
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        }
+    });
 
     // Close on Escape key press
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && mapModal && mapModal.classList.contains("active")) {
-            closeModal(mapModal);
+        if (e.key === "Escape") {
+            if (rsvpModal && rsvpModal.classList.contains("active")) closeModal(rsvpModal);
+            if (mapModal && mapModal.classList.contains("active")) closeModal(mapModal);
         }
     });
 

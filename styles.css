@@ -976,6 +976,52 @@ section {
     padding: 0.8rem 2.2rem;
 }
 
+/* Dedicated RSVP Page Section */
+.rsvp-section {
+    padding: 5rem 1.5rem;
+    text-align: center;
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 4rem 0 2rem 0;
+}
+
+.rsvp-container {
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.rsvp-intro-text {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+    margin-bottom: 2.2rem;
+}
+
+.rsvp-section-btn {
+    padding: 1.1rem 2.8rem;
+    font-size: 0.78rem;
+}
+
+.rsvp-preview-text {
+    font-size: 0.76rem;
+    color: var(--color-text-main);
+    background: var(--color-bg-alt);
+    padding: 1rem 1.2rem;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.rsvp-preview-text strong {
+    color: #000000;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
 /* Map Card and Leaflet details */
 .map-card {
     max-width: 650px;
