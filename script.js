@@ -496,7 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollIndicator = document.getElementById("scrollIndicator");
     if (scrollIndicator) {
         window.addEventListener("scroll", () => {
-            if (window.scrollY > 60) {
+            if (window.scrollY > 30) {
                 scrollIndicator.classList.add("hidden");
             } else {
                 scrollIndicator.classList.remove("hidden");
