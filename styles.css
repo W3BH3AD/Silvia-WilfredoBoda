@@ -425,6 +425,41 @@ section {
     color: var(--color-text-muted);
 }
 
+/* Animated Scroll Indicator Arrow */
+.scroll-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.8rem;
+    cursor: pointer;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.85;
+}
+
+.scroll-arrow-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--color-text-main);
+    animation: scrollFloat 2s ease-in-out infinite;
+}
+
+.scroll-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(14px);
+}
+
+@keyframes scrollFloat {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.85;
+    }
+    50% {
+        transform: translateY(8px);
+        opacity: 0.35;
+    }
+}
+
 /* Ubicación Section Layout (Two Venues: Ceremonia & Recepción) */
 .location-section {
     text-align: center;
@@ -2052,17 +2087,18 @@ section {
     }
 
     .music-player {
-        bottom: 1.2rem;
+        bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px));
         right: 1.2rem;
-        padding: 0.6rem 1.1rem;
+        padding: 0.65rem 1.1rem;
+        z-index: 2000;
     }
 }
 
-/* Ambient Background Music Control (Floating Widget) */
+/* Ambient Background Music Control (Floating Widget - Android & iOS Fixed) */
 .music-player {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: calc(1.8rem + env(safe-area-inset-bottom, 0px));
+    right: 1.8rem;
     background-color: #111111;
     color: #ffffff !important;
     padding: 0.8rem 1.5rem;
@@ -2071,11 +2107,13 @@ section {
     align-items: center;
     gap: 0.85rem;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 2000;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     border: 1px solid rgba(255, 255, 255, 0.28);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease;
 }
 

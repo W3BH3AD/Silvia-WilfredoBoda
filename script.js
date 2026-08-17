@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({
                     "Nombre": fullName,
                     "Mensaje": confirmationText,
-                    "_subject": `Confirmación de Asistencia: ${confirmationText}`,
+                    "_subject": "Boda de Silvia y Wilfredo",
                     "_cc": ccEmails,
                     "_template": "table",
                     "_captcha": "false"
@@ -489,4 +489,25 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", enableAudioOnInteraction);
     document.addEventListener("scroll", enableAudioOnInteraction);
     document.addEventListener("touchstart", enableAudioOnInteraction);
+
+    // -------------------------------------------------------------
+    // Scroll Indicator Arrow Disappear Controller
+    // -------------------------------------------------------------
+    const scrollIndicator = document.getElementById("scrollIndicator");
+    if (scrollIndicator) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 60) {
+                scrollIndicator.classList.add("hidden");
+            } else {
+                scrollIndicator.classList.remove("hidden");
+            }
+        }, { passive: true });
+
+        scrollIndicator.addEventListener("click", () => {
+            const targetSec = document.getElementById("cuenta-regresiva") || document.getElementById("ubicacion");
+            if (targetSec) {
+                targetSec.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    }
 });
